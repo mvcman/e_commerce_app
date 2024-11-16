@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CustomAuthentication</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><%= link_to "Home", root_path %></li>
+          <li><%= link_to "Dashboard", dashboard_path %></li>
+          <li><%= link_to "Sign in", new_session_path %></li>
+          <li><%= link_to "Sign up", new_registration_path %></li>
+          <li><%= link_to "Edit password", edit_password_path %></li>
+          <li><%= button_to "Sign out", session_path, method: :delete %></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <%= notice %>
+      <%= yield %>
+    </main>
+  </body>
+</html>
