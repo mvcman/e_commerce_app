@@ -7,6 +7,17 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   resource :dashboard, only: :show
+  resources :products do 
+    member do 
+      delete :destroy_image
+    end
+  end
+  resource :cart, only: :show do 
+    post "add_item/:product_id", to: "carts#add_item", as: 'add_item'
+    patch "update_item/:id", to: "carts#update_item", as: "update_item"
+    delete "remove_item/:id", to: "carts#remove_item", as: "remove_item"
+  end
+  resources :orders, only: [:create, :show, :index]
   resource :registration, only: %i[new create]
   resource :session, only: %i[new create destroy]
   resource :password_reset, only: %i[new create edit update]

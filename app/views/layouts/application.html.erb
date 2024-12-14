@@ -1,31 +1,34 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CustomAuthentication</title>
+    <title><%= content_for(:title) ||"CustomAuthentication" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <header>
-      <nav>
-        <ul>
-          <li><%= link_to "Home", root_path %></li>
-          <li><%= link_to "Dashboard", dashboard_path %></li>
-          <li><%= link_to "Sign in", new_session_path %></li>
-          <li><%= link_to "Sign up", new_registration_path %></li>
-          <li><%= link_to "Edit password", edit_password_path %></li>
-          <li><%= button_to "Sign out", session_path, method: :delete %></li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <%= notice %>
-      <%= yield %>
+  <body class="w-full h-screen flex flex-col">
+    <nav class="h-12 min-h-12 px-8 shadow w-full bg-primary shadow border-b border-emerald-300 flex items-center justify-between">
+      <%= render "layouts/header" %>
+    </nav>
+    <main class="flex-1 w-full h-full bg-secondary grid grid-cols-1 md:grid-cols-[auto,1fr] gap-0 p-0 overflow-y-auto">
+      <div class="h-full w-56 bg-secondary overflow-y-auto hidden md:flex">
+        <%= render partial: "layouts/navbar" %>
+      </div>
+      <div class="max-h-full h-full w-full flex flex-col overflow-y-auto">
+        <div class="w-full h-12 flex items-center justify-between p-4">
+          <h2 class="font-medium text-md">Welcome, Alon Baker</h2>
+          <div class="self-end"></div>
+        </div>
+        <div class="flex-1 overflow-y-auto md:rounded-tl-xl bg-white border-t border-l border-primary">
+          <%= notice %>
+          <%= yield %>
+        </div>
+      </div>
     </main>
   </body>
 </html>

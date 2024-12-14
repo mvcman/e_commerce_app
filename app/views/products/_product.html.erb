@@ -1,0 +1,26 @@
+<div class="w-full rounded-md shadow border border-primary bg-white">
+    <%= image_tag product.images.attached? ? product.images.first : "bgimg.png", class: "w-full h-24 rounded-t-md" %>
+    <div class="flex flex-col p-2 space-y-1">
+        <h2 class="font-medium text-black capitalize text-md"><%= product.name %></h2>
+        <div class="truncate">
+            <h2 class="text-sm text-gray-500"><%= product.description %></h2>
+        </div>
+        <div class="grid grid-cols-2">
+            <p class="text-base text-gray-600">Rs: <span class="font-medium text-black"><%= product.price.to_f.round(2)%></span></p>
+            <p class="text-base text-gray-600">Quantity: <span class="font-medium text-black"><%= product.stock %></span></p>
+        </div>
+        <% if product.is_editable? %>
+            <p class="text-base text-gray-600">Added by <span class="font-medium text-black">You</span></p>
+        <% end %>
+    </div>
+    <div class="grid grid-cols-2 border-t border-primary h-8">
+        <div class="w-full inline-flex">
+            <%= link_to "View", product_path(product), class: "flex-1 flex items-center justify-center" %>
+        </div>
+        <div class="w-full border-l border-primary flex">
+            <%= form_with(url: add_item_cart_path(product), method: :post, class: "flex-1 flex items-center justify-center cursor-pointer")  do |form|%>
+                <%= form.submit "Add to cart", class: "cursor-pointer flex-1" %>
+            <% end %>
+        </div>
+    </div>
+</div>

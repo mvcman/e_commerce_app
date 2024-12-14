@@ -1,0 +1,10 @@
+<ul class="flex items-center h-full space-x-2 text-white">
+    <li><%= link_to "Home", root_path %></li>
+    <li><%= link_to "Dashboard", dashboard_path %></li>
+</ul>
+<ul class="flex items-center h-full space-x-2 text-white">
+    <li><%= link_to "Sign in", new_session_path %></li>
+    <li><%= link_to "Sign up", new_registration_path %></li>
+    <li><%= link_to "Edit password", edit_password_path %></li>
+    <li><%= button_to "Sign out", session_path, method: :delete %></li>
+</ul>

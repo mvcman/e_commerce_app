@@ -1,5 +1,9 @@
 class User < ApplicationRecord
     has_many :sessions, dependent: :destroy
+    has_one :cart, dependent: :destroy 
+    has_many :orders, dependent: :destroy 
+    has_many :products, dependent: :destroy
+
     MINIMUM_PASSWORD_LENGTH = 8
     has_secure_password
 

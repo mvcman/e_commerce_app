@@ -15,15 +15,15 @@ default: &default
 
 development:
   <<: *default
-  database: custom_rails_authentication_development
+  database: e_commerce_app_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: custom_rails_authentication_test
+  database: e_commerce_app_test
 
 production:
   <<: *default
-  database: custom_rails_authentication_production
+  database: e_commerce_app_production

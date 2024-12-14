@@ -1,0 +1,8 @@
+<div class="flex flex-col p-4 border border-primary rounded-md">
+    <div class="h-8 flex items-center font-medium"># <%= category.name %></div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2">
+        <% products.each do |product| %>
+            <%= render "products/product", product: %>
+        <% end %>
+    </div>
+</div>

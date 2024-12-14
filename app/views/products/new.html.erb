@@ -1,0 +1,9 @@
+<div class="w-full h-full flex flex-col">
+    <div class="w-full h-12 flex items-center p-4 border-b border-primary font-medium space-x-2">
+        <%= breadcrumbs %>
+    </div>
+    <div class="flex flex-col p-4 space-y-2">
+        <h2>Create New Product</h2>
+        <%= render "form", product: @product %>
+    </div>
+</div>
